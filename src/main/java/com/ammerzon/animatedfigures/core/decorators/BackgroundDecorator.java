@@ -21,8 +21,8 @@ public class BackgroundDecorator extends FigureDecorator {
 
     var ga = (Graphics2D) g;
     ga.setPaint(color);
-    g.fillRect(origin.x() - OFFSET, origin.y() - OFFSET, size.width() + 2 * OFFSET,
-        size.height() + 2 * OFFSET);
+    g.fillRect(origin.x() - OFFSET, origin.y() - OFFSET, (int) (size.width() + 2.0 * OFFSET),
+        (int) (size.height() + 2.0 * OFFSET));
 
     super.paint(g);
   }

@@ -1,5 +1,6 @@
 package com.ammerzon.animatedfigures.core.shapes.impl;
 
+import com.ammerzon.animatedfigures.helpers.Inset;
 import com.ammerzon.animatedfigures.helpers.Point;
 import com.ammerzon.animatedfigures.helpers.Size;
 import java.awt.Color;
@@ -8,7 +9,7 @@ import java.awt.Graphics2D;
 
 public class RectangleShape extends BaseShape {
 
-  private final Size size;
+  private Size size;
 
   public RectangleShape(Point origin, Color color, Size size) {
     this(origin, color, true, size);
@@ -25,14 +26,19 @@ public class RectangleShape extends BaseShape {
   }
 
   @Override
+  public void resize(Inset inset) {
+    size = size.withInset(inset);
+  }
+
+  @Override
   public void paint(Graphics g) {
     var ga = (Graphics2D) g;
     ga.setPaint(color);
 
     if (filled) {
-      g.fillRect(origin.x(), origin.y(), size.width(), size.height());
+      g.fillRect(origin.x(), origin.y(), (int) size.width(), (int) size.height());
     } else {
-      g.drawRect(origin.x(), origin.y(), size.width(), size.height());
+      g.drawRect(origin.x(), origin.y(), (int) size.width(), (int) size.height());
     }
   }
 

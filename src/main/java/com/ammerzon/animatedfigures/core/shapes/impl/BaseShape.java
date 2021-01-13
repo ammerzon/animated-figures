@@ -23,4 +23,9 @@ public abstract class BaseShape implements Shape {
   public Point getOrigin() {
     return origin;
   }
+
+  @Override
+  public void setOrigin(Point origin) {
+    this.origin = origin;
+  }
 }

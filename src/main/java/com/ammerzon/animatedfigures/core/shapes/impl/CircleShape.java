@@ -1,5 +1,6 @@
 package com.ammerzon.animatedfigures.core.shapes.impl;
 
+import com.ammerzon.animatedfigures.helpers.Inset;
 import com.ammerzon.animatedfigures.helpers.Point;
 import com.ammerzon.animatedfigures.helpers.Size;
 import java.awt.Color;
@@ -8,7 +9,7 @@ import java.awt.Graphics2D;
 
 public class CircleShape extends BaseShape {
 
-  private final int diameter;
+  private int diameter;
 
   public CircleShape(Point origin, Color color, int diameter) {
     this(origin, color, true, diameter);
@@ -22,6 +23,12 @@ public class CircleShape extends BaseShape {
   @Override
   public Size getSize() {
     return new Size(diameter, diameter);
+  }
+
+  @Override
+  public void resize(Inset inset) {
+    diameter += inset.top();
+    diameter += inset.bottom();
   }
 
   @Override

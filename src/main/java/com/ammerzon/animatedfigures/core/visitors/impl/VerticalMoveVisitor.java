@@ -7,14 +7,15 @@ import com.ammerzon.animatedfigures.core.visitors.ShapeVisitor;
 import com.ammerzon.animatedfigures.helpers.Direction;
 import com.ammerzon.animatedfigures.helpers.Size;
 import java.util.HashMap;
+import java.util.Objects;
 
-public final class HorizontalMoveVisitor implements ShapeVisitor {
+public final class VerticalMoveVisitor implements ShapeVisitor {
 
-  private static final int SPEED = 5;
+  private static final int SPEED = 2;
   private final Size frame;
   private final HashMap<Figure, Direction> visitedFigures = new HashMap<>();
 
-  public HorizontalMoveVisitor(Size frame) {
+  public VerticalMoveVisitor(Size frame) {
     this.frame = frame;
   }
 
@@ -29,18 +30,18 @@ public final class HorizontalMoveVisitor implements ShapeVisitor {
   }
 
   private void moveFigure(Figure figure) {
-    var direction = Direction.RIGHT;
+    var direction = Direction.UP;
     if (visitedFigures.containsKey(figure)) {
       direction = visitedFigures.get(figure);
     }
 
-    var speed = direction == Direction.RIGHT ? SPEED : -SPEED;
-    figure.move(speed, 0);
+    var speed = direction == Direction.DOWN ? SPEED : -SPEED;
+    figure.move(0, speed);
 
-    if (figure.getOrigin().x() + figure.getSize().width() >= frame.width()) {
-      visitedFigures.put(figure, Direction.LEFT);
-    } else if (figure.getOrigin().x() <= 0) {
-      visitedFigures.put(figure, Direction.RIGHT);
+    if (figure.getOrigin().x() + figure.getSize().height() >= frame.height()) {
+      visitedFigures.put(figure, Direction.UP);
+    } else if (figure.getOrigin().y() <= 0) {
+      visitedFigures.put(figure, Direction.DOWN);
     }
   }
 

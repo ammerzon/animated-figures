@@ -22,8 +22,8 @@ public class BorderDecorator extends FigureDecorator {
 
     var ga = (Graphics2D) g;
     ga.setPaint(color);
-    g.drawRect(origin.x() - OFFSET, origin.y() - OFFSET, size.width() + 2 * OFFSET,
-        size.height() + 2 * OFFSET);
+    g.drawRect(origin.x() - OFFSET, origin.y() - OFFSET, (int) (size.width() + 2 * OFFSET),
+        (int) (size.height() + 2 * OFFSET));
 
     super.paint(g);
   }

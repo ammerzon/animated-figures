@@ -5,15 +5,19 @@ import com.ammerzon.animatedfigures.core.decorators.BorderDecorator;
 import com.ammerzon.animatedfigures.core.figures.impl.ChainFigure;
 import com.ammerzon.animatedfigures.core.figures.impl.MagnifierFigure;
 import com.ammerzon.animatedfigures.core.visitors.impl.HorizontalMoveVisitor;
+import com.ammerzon.animatedfigures.core.visitors.impl.VerticalMoveVisitor;
 import com.ammerzon.animatedfigures.core.visitors.impl.ResizeVisitor;
-import com.ammerzon.animatedfigures.core.visitors.impl.RotateVisitor;
 import com.ammerzon.animatedfigures.helpers.ColorConverter;
+import com.ammerzon.animatedfigures.helpers.Inset;
 import com.ammerzon.animatedfigures.helpers.Point;
+import com.ammerzon.animatedfigures.helpers.Size;
 import com.ammerzon.animatedfigures.views.FiguresPanel;
 import com.ammerzon.animatedfigures.views.impl.FiguresPanelImpl;
 import javax.swing.JFrame;
 
 public final class App {
+  private static final int WIDTH = 1000;
+  private static final int HEIGHT = 600;
 
   public static void main(String[] args) {
     System.setProperty("apple.laf.useScreenMenuBar", "true");
@@ -25,10 +29,11 @@ public final class App {
 
     frame.getContentPane().add(panel);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setSize(1000, 600);
+    frame.setSize(WIDTH, HEIGHT);
     frame.setResizable(false);
     frame.setLocationRelativeTo(null);
     frame.setVisible(true);
+    panel.startAnimations();
   }
 
   private static void addFiguresToPanel(FiguresPanel panel) {
@@ -37,16 +42,16 @@ public final class App {
         new ChainFigure(new Point(100, 100), 5),
         ColorConverter.hex2Rgb("#95a5a6")));
     panel.addFigure(new BorderDecorator(
-        new MagnifierFigure(new Point(400, 300)),
+        new MagnifierFigure(new Point(400, 400)),
         ColorConverter.hex2Rgb("#d35400")));
     panel.addFigure(new BackgroundDecorator(
         new BorderDecorator(
-            new MagnifierFigure(new Point(600, 400)),
+            new MagnifierFigure(new Point(600, 500)),
             ColorConverter.hex2Rgb("#27ae60")),
         ColorConverter.hex2Rgb("#2c3e50")));
     panel.addVisitor(new ResizeVisitor());
-    panel.addVisitor(new HorizontalMoveVisitor());
-    panel.addVisitor(new RotateVisitor());
+    panel.addVisitor(new VerticalMoveVisitor(new Size(WIDTH, HEIGHT)));
+    panel.addVisitor(new HorizontalMoveVisitor(new Size(WIDTH, HEIGHT)));
   }
 }
 

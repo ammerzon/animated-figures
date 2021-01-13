@@ -45,7 +45,7 @@ public class FiguresPanelImpl extends JPanel implements FiguresPanel {
         e.printStackTrace();
       }
     });
-
+    animationThread.start();
   }
 
   @Override
