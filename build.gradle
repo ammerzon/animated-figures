@@ -5,6 +5,9 @@ plugins {
 group 'com.ammerzon'
 version '1.0-SNAPSHOT'
 
+sourceCompatibility = JavaVersion.VERSION_15
+targetCompatibility = JavaVersion.VERSION_15
+
 repositories {
     mavenCentral()
 }
@@ -14,6 +17,15 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
+compileJava {
+    options.compilerArgs += ["--enable-preview"]
+}
+
+compileTestJava {
+    options.compilerArgs += ["--enable-preview"]
+}
+
 test {
+    jvmArgs '--enable-preview'
     useJUnitPlatform()
 }

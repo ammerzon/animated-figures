@@ -1,7 +1,15 @@
 package com.ammerzon.animatedfigures.views;
 
-import javax.swing.JPanel;
+import com.ammerzon.animatedfigures.core.figures.Figure;
+import com.ammerzon.animatedfigures.core.visitors.ShapeVisitor;
 
-public class FiguresPanel extends JPanel {
+public interface FiguresPanel {
 
+  void addFigure(Figure figure);
+
+  void addVisitor(ShapeVisitor visitor);
+
+  void startAnimations();
+
+  void stopAnimations();
 }
