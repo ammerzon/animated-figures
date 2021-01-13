@@ -7,6 +7,8 @@ import com.ammerzon.animatedfigures.core.figures.impl.MagnifierFigure;
 import com.ammerzon.animatedfigures.core.visitors.impl.HorizontalMoveVisitor;
 import com.ammerzon.animatedfigures.core.visitors.impl.ResizeVisitor;
 import com.ammerzon.animatedfigures.core.visitors.impl.RotateVisitor;
+import com.ammerzon.animatedfigures.helpers.ColorConverter;
+import com.ammerzon.animatedfigures.helpers.Point;
 import com.ammerzon.animatedfigures.views.FiguresPanel;
 import com.ammerzon.animatedfigures.views.impl.FiguresPanelImpl;
 import javax.swing.JFrame;
@@ -30,8 +32,18 @@ public final class App {
   }
 
   private static void addFiguresToPanel(FiguresPanel panel) {
-    panel.addFigure(new BackgroundDecorator(new ChainFigure()));
-    panel.addFigure(new BorderDecorator(new MagnifierFigure()));
+    panel.addFigure(new ChainFigure(new Point(300, 200), 6));
+    panel.addFigure(new BackgroundDecorator(
+        new ChainFigure(new Point(100, 100), 5),
+        ColorConverter.hex2Rgb("#95a5a6")));
+    panel.addFigure(new BorderDecorator(
+        new MagnifierFigure(new Point(400, 300)),
+        ColorConverter.hex2Rgb("#d35400")));
+    panel.addFigure(new BackgroundDecorator(
+        new BorderDecorator(
+            new MagnifierFigure(new Point(600, 400)),
+            ColorConverter.hex2Rgb("#27ae60")),
+        ColorConverter.hex2Rgb("#2c3e50")));
     panel.addVisitor(new ResizeVisitor());
     panel.addVisitor(new HorizontalMoveVisitor());
     panel.addVisitor(new RotateVisitor());
