@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 public class BackgroundDecorator extends FigureDecorator {
+
   private static final int OFFSET = 10;
   private final Color color;
 

@@ -5,10 +5,9 @@ import com.ammerzon.animatedfigures.core.decorators.BorderDecorator;
 import com.ammerzon.animatedfigures.core.figures.impl.ChainFigure;
 import com.ammerzon.animatedfigures.core.figures.impl.MagnifierFigure;
 import com.ammerzon.animatedfigures.core.visitors.impl.HorizontalMoveVisitor;
-import com.ammerzon.animatedfigures.core.visitors.impl.VerticalMoveVisitor;
 import com.ammerzon.animatedfigures.core.visitors.impl.ResizeVisitor;
+import com.ammerzon.animatedfigures.core.visitors.impl.VerticalMoveVisitor;
 import com.ammerzon.animatedfigures.helpers.ColorConverter;
-import com.ammerzon.animatedfigures.helpers.Inset;
 import com.ammerzon.animatedfigures.helpers.Point;
 import com.ammerzon.animatedfigures.helpers.Size;
 import com.ammerzon.animatedfigures.views.FiguresPanel;
@@ -16,6 +15,7 @@ import com.ammerzon.animatedfigures.views.impl.FiguresPanelImpl;
 import javax.swing.JFrame;
 
 public final class App {
+
   private static final int WIDTH = 1000;
   private static final int HEIGHT = 600;
 

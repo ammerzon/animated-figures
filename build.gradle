@@ -25,6 +25,13 @@ compileTestJava {
     options.compilerArgs += ["--enable-preview"]
 }
 
+task(run, dependsOn: 'classes', type: JavaExec) {
+    jvmArgs "--enable-preview"
+    main = 'com.ammerzon.animatedfigures.App'
+    classpath = sourceSets.main.runtimeClasspath
+    classpath += sourceSets.main.resources
+}
+
 test {
     jvmArgs '--enable-preview'
     useJUnitPlatform()

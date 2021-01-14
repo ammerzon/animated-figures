@@ -7,7 +7,6 @@ import com.ammerzon.animatedfigures.core.visitors.ShapeVisitor;
 import com.ammerzon.animatedfigures.helpers.Direction;
 import com.ammerzon.animatedfigures.helpers.Size;
 import java.util.HashMap;
-import java.util.Objects;
 
 public final class VerticalMoveVisitor implements ShapeVisitor {
 
